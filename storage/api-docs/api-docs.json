@@ -37,8 +37,8 @@
                 "tags": [
                     "Bond API"
                 ],
-                "summary": "Creating a Bond Purchase Order API",
-                "description": "Creating a Bond Purchase Order API",
+                "summary": "Create Order API",
+                "description": "Create Order API",
                 "operationId": "1c5e4ae696b48725885ea1cf10c96d61",
                 "parameters": [
                     {

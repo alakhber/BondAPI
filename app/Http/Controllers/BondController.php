@@ -47,8 +47,8 @@ class BondController extends Controller
     /**
      * @OA\Post(
      *  path="/api/bond/{id}/order",
-     *  summary="Creating a Bond Purchase Order API",
-     *  description="Creating a Bond Purchase Order API",
+     *  summary="Create Order API",
+     *  description="Create Order API",
      *  tags={"Bond API"},
      *      @OA\Parameter(
      *              name="order_date",
