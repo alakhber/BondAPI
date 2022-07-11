@@ -2,29 +2,29 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Bond;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PurchaseOrderStoreRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'bond_id' => request()->id,
+        ]);
+    }
+
     public function rules()
     {
         return [
-            //
+            'bond_id' => ['required', 'integer', 'exists:bonds,id'],
+            'order_date' => ['required', 'date_format:Y-m-d', 'after_or_equal:' . Bond::find($this->bond_id)->emission_date, 'before_or_equal:' . Bond::find($this->bond_id)->turnover_end_date],
+            'bond_received' => ['required', 'integer']
         ];
     }
 }
