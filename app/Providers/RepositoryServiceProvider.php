@@ -2,25 +2,18 @@
 
 namespace App\Providers;
 
+use App\Repositories\Bond\BondInterface;
+use App\Repositories\Bond\BondRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
+   
     public function register()
     {
-        //
+        $this->app->bind(BondInterface::class,BondRepository::class);
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
         //
