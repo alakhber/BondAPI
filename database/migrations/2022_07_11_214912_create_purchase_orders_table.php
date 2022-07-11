@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('bond_id')->references('id')->on('bonds')->onDelete('cascade');
+            $table->date('order_date');
+            $table->unsignedBigInteger('bond_received');
             $table->timestamps();
         });
     }
