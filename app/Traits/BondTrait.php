@@ -14,4 +14,8 @@ trait BondTrait
     public function interestPaymentsWithAmount(PurchaseOrder $purchaseOrder, $bondPaymentDates)
     {
     }
+
+    public function accruedInterest(PurchaseOrder $purchaseOrder, $numberOfDaysPast)
+    {
+    }
 }
