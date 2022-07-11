@@ -47,11 +47,11 @@ trait BondTrait
             $itemDate = _parseDate($item['date']);
             if ($key == 0) {
                 $orderDate = _parseDate($purchaseOrder->order_date);
-                $interestPayments['amount'] = $this->interestPayments($purchaseOrder, $itemDate->diffInDays($orderDate));
+                $interestPayments['amount'] = $this->accruedInterest($purchaseOrder, $itemDate->diffInDays($orderDate));
             }
             if ($key != 0 && $key < count($bondPaymentDates) - 1) {
                 $bondPaymentDate = _parseDate($bondPaymentDates[$key + 1]['date']);
-                $interestPayments['amount'] = $this->interestPayments($purchaseOrder, $itemDate->diffInDays($bondPaymentDate));
+                $interestPayments['amount'] = $this->accruedInterest($purchaseOrder, $itemDate->diffInDays($bondPaymentDate));
             }
 
             return $interestPayments;
