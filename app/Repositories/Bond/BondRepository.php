@@ -4,6 +4,7 @@ namespace App\Repositories\Bond;
 use App\Http\Requests\PurchaseOrderStoreRequest;
 use App\Http\Resources\PaymentDatesResource;
 use App\Models\Bond;
+use App\Models\PurchaseOrder;
 use Carbon\Carbon;
 
 class BondRepository implements BondInterface
@@ -43,7 +44,11 @@ class BondRepository implements BondInterface
 
     public function purchaseOrderStore(PurchaseOrderStoreRequest $request, int $id)
     {
-        
+       PurchaseOrder::create($request->validated());
+        return response()->json([
+            'message'=>'Order Created',
+            'status'=>201,
+        ]); 
     }
 
     public function bondInterestPayments(int $id)
