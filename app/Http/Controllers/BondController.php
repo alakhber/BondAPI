@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PurchaseOrderStoreRequest;
 use App\Http\Resources\PaymentDatesResource;
 use App\Models\Bond;
+use App\Models\PurchaseOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -42,7 +44,11 @@ class BondController extends Controller
         return PaymentDatesResource::collection($calcWithOutStrdayAndSnday);
     }
 
-    public function purchaseOrderStore(Request $request,$id){
-        
+    public function purchaseOrderStore(PurchaseOrderStoreRequest $request,$id){
+        PurchaseOrder::create($request->validated());
+        return response()->json([
+            'message'=>'Order Created',
+            'status'=>201,
+        ]);
     }
 }
