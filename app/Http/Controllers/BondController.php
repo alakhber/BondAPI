@@ -51,4 +51,8 @@ class BondController extends Controller
             'status'=>201,
         ]);
     }
+
+    public function bondInterestPayments($id){
+
+    }
 }
