@@ -17,5 +17,6 @@ trait BondTrait
 
     public function accruedInterest(PurchaseOrder $purchaseOrder, $numberOfDaysPast)
     {
+        return number_format(($purchaseOrder->bond->nominal / 100 * $purchaseOrder->bond->coupon_redemption_frequency) / $purchaseOrder->bond->interest_calculation_period * $numberOfDaysPast * $purchaseOrder->bond_received, 2);
     }
 }
