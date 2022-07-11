@@ -41,6 +41,25 @@ trait BondTrait
 
     public function interestPaymentsWithAmount(PurchaseOrder $purchaseOrder, $bondPaymentDates)
     {
+        $interestPayments = [];
+        $interestPaymentsWithAmount = $bondPaymentDates->map(function ($item, $key) use ($purchaseOrder, $bondPaymentDates, $interestPayments) {
+            $interestPayments['date'] = $item['date'];
+            $itemDate = _parseDate($item['date']);
+            if ($key == 0) {
+                $orderDate = _parseDate($purchaseOrder->order_date);
+                $interestPayments['amount'] = $this->interestPayments($purchaseOrder, $itemDate->diffInDays($orderDate));
+            }
+            if ($key != 0 && $key < count($bondPaymentDates) - 1) {
+                $bondPaymentDate = _parseDate($bondPaymentDates[$key + 1]['date']);
+                $interestPayments['amount'] = $this->interestPayments($purchaseOrder, $itemDate->diffInDays($bondPaymentDate));
+            }
+
+            return $interestPayments;
+        })->filter(function ($item) {
+            return isset($item['amount']);
+        });
+
+        return $interestPaymentsWithAmount;
     }
 
     public function accruedInterest(PurchaseOrder $purchaseOrder, $numberOfDaysPast)
