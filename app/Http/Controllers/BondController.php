@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PaymentDatesResource;
 use App\Models\Bond;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class BondController extends Controller
 {
@@ -39,5 +40,9 @@ class BondController extends Controller
         });
 
         return PaymentDatesResource::collection($calcWithOutStrdayAndSnday);
+    }
+
+    public function purchaseOrderStore(Request $request,$id){
+        
     }
 }
