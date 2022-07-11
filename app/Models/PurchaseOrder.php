@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseOrder extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'bond_id',
+        'order_date',
+        'bond_receivd'
+    ];
+
+    public function bond()
+    {
+        return $this->hasOne(Bond::class, 'id');
+    }
 }
