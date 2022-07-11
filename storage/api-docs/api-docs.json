@@ -1,0 +1,104 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API List",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/bond/{id}/payouts": {
+            "get": {
+                "tags": [
+                    "Bond API"
+                ],
+                "summary": "Get Bond Payout Dates",
+                "description": "Get Bond Payout Dates",
+                "operationId": "4f7d06c7da1b3c5b35e65f930b0141ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bond Id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bond/{id}/order": {
+            "post": {
+                "tags": [
+                    "Bond API"
+                ],
+                "summary": "Creating a Bond Purchase Order API",
+                "description": "Creating a Bond Purchase Order API",
+                "operationId": "1c5e4ae696b48725885ea1cf10c96d61",
+                "parameters": [
+                    {
+                        "name": "order_date",
+                        "in": "query",
+                        "description": "Order Date",
+                        "required": true,
+                        "example": "2021-11-08"
+                    },
+                    {
+                        "name": "bond_received",
+                        "in": "query",
+                        "description": "bond received",
+                        "required": true,
+                        "example": "1"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bond Id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bond/order/{id}": {
+            "post": {
+                "tags": [
+                    "Bond API"
+                ],
+                "summary": "Bond Order Interest Payments API",
+                "description": "Bond Order Interest Payments API",
+                "operationId": "236744abecc4bebaee466881ce3ae765",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bond Id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
