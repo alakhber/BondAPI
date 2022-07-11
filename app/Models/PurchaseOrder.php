@@ -11,7 +11,7 @@ class PurchaseOrder extends Model
     protected $fillable = [
         'bond_id',
         'order_date',
-        'bond_receivd'
+        'bond_received'
     ];
 
     public function bond()
