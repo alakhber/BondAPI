@@ -53,14 +53,14 @@ class BondController extends Controller
      *      @OA\Parameter(
      *              name="order_date",
      *              in="query",
-     *              description="Order Date",
+     *              description="OBond Order Date",
      *              required=true,
      *              example="2021-11-08",
      *      ),
      *      @OA\Parameter(
      *              name="bond_received",
      *              in="query",
-     *              description="bond received",
+     *              description="Number Of Bonds Received",
      *              required=true,
      *              example="1",
      *       ),
@@ -92,7 +92,7 @@ class BondController extends Controller
      *      @OA\Parameter(
      *           name="id",
      *           in="path",
-     *           description="Bond Id",
+     *           description="ID Of The Received Bond",
      *           required=true,
      *           example="1",
      *      ),
